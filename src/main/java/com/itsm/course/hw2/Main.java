@@ -6,13 +6,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
     public static void main(String[] args) {
+
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        ServerService serverService = context.getBean(ServerService.class);
         context.registerShutdownHook();
 
-        ServerService serverService = context.getBean(ServerService.class);
-        while (true) {
-            serverService.run();
-        }
+        while (true) serverService.run();
     }
 
 }

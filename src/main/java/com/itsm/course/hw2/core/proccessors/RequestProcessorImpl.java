@@ -25,7 +25,7 @@ public class RequestProcessorImpl implements RequestProcessor {
         String message = request.getMessage();
         String name = request.getName();
         sleeper.sleep(delay);
-        System.out.println(String.format("message from: %s, content: %s", name, message));
+        System.out.println(String.format("%s's message: %s", name, message));
         return "Hello, " + name;
     }
 

@@ -1,5 +1,7 @@
-package com.itsm.course.hw2.util.inject;
+package javax.inject;
 
 public interface Provider<T> {
+
     T get();
+
 }

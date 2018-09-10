@@ -2,7 +2,7 @@ package com.itsm.course.hw2;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itsm.course.hw2.core.ServerService;
-import com.itsm.course.hw2.util.inject.Provider;
+import javax.inject.Provider;
 import com.itsm.course.hw2.core.proccessors.RequestProcessor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;

@@ -3,7 +3,7 @@ package com.itsm.course.hw2.core;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itsm.course.hw2.dto.Request;
 import com.itsm.course.hw2.dto.Response;
-import com.itsm.course.hw2.util.inject.Provider;
+import javax.inject.Provider;
 import com.itsm.course.hw2.core.proccessors.RequestProcessor;
 
 import javax.annotation.PostConstruct;
