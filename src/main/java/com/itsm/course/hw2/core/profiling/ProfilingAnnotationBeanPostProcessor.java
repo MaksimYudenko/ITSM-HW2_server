@@ -32,11 +32,7 @@ public class ProfilingAnnotationBeanPostProcessor implements BeanPostProcessor {
             return Proxy.newProxyInstance(
                     original.getClass().getClassLoader(),
                     original.getClass().getInterfaces(),
-                    (proxy, method, args) -> {
-                        Object proxyBean = method.invoke(original, args);
-                        long end = System.currentTimeMillis();
-                        return proxyBean;
-                    }
+                    (proxy, method, args) -> method.invoke(original, args)
             );
         }
         return bean;

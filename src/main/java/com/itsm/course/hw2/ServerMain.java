@@ -1,17 +1,17 @@
 package com.itsm.course.hw2;
 
-import com.itsm.course.hw2.core.ServerService;
+import com.itsm.course.hw2.core.Server;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class Main {
+public class ServerMain {
 
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
-        ServerService serverService = context.getBean(ServerService.class);
+        Server server = context.getBean(Server.class);
         context.registerShutdownHook();
 
-        while (true) serverService.run();
+        while (true) server.run();
     }
 
 }

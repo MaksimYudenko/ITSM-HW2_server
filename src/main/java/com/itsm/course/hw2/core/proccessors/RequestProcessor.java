@@ -6,4 +6,6 @@ public interface RequestProcessor {
 
     String process(Request request);
 
+    boolean isAdmissible(Request request);
+
 }
