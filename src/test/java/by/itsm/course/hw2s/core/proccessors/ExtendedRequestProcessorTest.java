@@ -9,20 +9,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.Assert;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BaseRequestProcessorTest {
+public class ExtendedRequestProcessorTest {
 
     @Value("${delay}")
     long delay;
 
     @InjectMocks
-    private BaseRequestProcessor baseRequestProcessor;
+    private ExtendedRequestProcessor extendedRequestProcessor;
 
     @Test
     public void isAdmissibleTest() {
         Request req1 = new Request("Max", "Hello, server");
         Request req2 = new Request("Max", "Hello there");
-        Assert.isTrue(baseRequestProcessor.isAdmissible(req1), "it's OK  )");
-        Assert.isTrue(!baseRequestProcessor.isAdmissible(req2), "something went wrong  (");
+        Assert.isTrue(extendedRequestProcessor.isAdmissible(req2), "it's OK  )");
+        Assert.isTrue(!extendedRequestProcessor.isAdmissible(req1), "something went wrong  (");
     }
 
 }

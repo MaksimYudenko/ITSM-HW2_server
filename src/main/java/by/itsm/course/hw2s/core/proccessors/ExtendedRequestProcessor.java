@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 @Scope("prototype")
 public class ExtendedRequestProcessor implements RequestProcessor {
@@ -17,16 +19,15 @@ public class ExtendedRequestProcessor implements RequestProcessor {
 
     @Override
     public String process(Request request) {
-        String message = request.getMessage();
         String name = request.getName();
         sleeper.sleep(delay);
-        System.out.println(String.format("%s's new message: %s", name, message));
-        return "Hello, " + name + " from ExtReqProc";
+        System.out.println(String.format("%s's new message: %s", name, request.getMessage()));
+        return "Hello, " + name + " from ExtendedRequestProcessor";
     }
 
     @Override
     public boolean isAdmissible(Request request) {
-        return request != null && "exit".equalsIgnoreCase(request.getMessage());
+        return request != null & !Objects.requireNonNull(request).getMessage().contains("server");
     }
 
 }
