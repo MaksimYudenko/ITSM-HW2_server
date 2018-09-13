@@ -1,8 +1,8 @@
-package com.itsm.course.hw2.core.proccessors;
+package by.itsm.course.hw2s.core.proccessors;
 
-import com.itsm.course.hw2.dto.Request;
-import com.itsm.course.hw2.util.sleeper.ThreadSleeper;
-import com.itsm.course.hw2.util.sleeper.ThreadSleeperImpl;
+import by.itsm.course.hw2s.core.model.Request;
+import by.itsm.course.hw2s.util.sleeper.ThreadSleeper;
+import by.itsm.course.hw2s.util.sleeper.ThreadSleeperImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class BaseRequestProcessor implements RequestProcessor {
 
     @Value("${delay}")
-    private Long delay;
+    private long delay;
     private final ThreadSleeper sleeper = new ThreadSleeperImpl();
 
     @Override

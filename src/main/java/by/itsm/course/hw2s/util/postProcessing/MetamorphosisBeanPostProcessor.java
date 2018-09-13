@@ -1,5 +1,6 @@
-package com.itsm.course.hw2.core.profiling;
+package by.itsm.course.hw2s.util.postProcessing;
 
+import by.itsm.course.hw2s.core.model.Response;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class ProfilingAnnotationBeanPostProcessor implements BeanPostProcessor {
+public class MetamorphosisBeanPostProcessor implements BeanPostProcessor {
 
     private Map<String, Object> beans = new HashMap<>();
 
@@ -18,7 +19,7 @@ public class ProfilingAnnotationBeanPostProcessor implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 
         boolean match = Arrays.stream(bean.getClass().getMethods())
-                .anyMatch(m -> m.isAnnotationPresent(Profiling.class));
+                .anyMatch(m -> m.isAnnotationPresent(Metamorphosis.class));
         if (match) {
             beans.put(beanName, bean);
         }
@@ -32,7 +33,16 @@ public class ProfilingAnnotationBeanPostProcessor implements BeanPostProcessor {
             return Proxy.newProxyInstance(
                     original.getClass().getClassLoader(),
                     original.getClass().getInterfaces(),
-                    (proxy, method, args) -> method.invoke(original, args)
+                    (proxy, method, args) -> {
+                        Object result = method.invoke(original, args);
+                        if (method.isAnnotationPresent(Metamorphosis.class)
+                                || method.getName().equalsIgnoreCase("metamorphosis")) {
+                            Response res = (Response) result;
+                            res.setMessage(res.getMessage() + " from proxy.");
+                            result = res;
+                        }
+                        return result;
+                    }
             );
         }
         return bean;

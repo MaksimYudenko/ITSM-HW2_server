@@ -1,6 +1,7 @@
-package com.itsm.course.hw2;
+package by.itsm.course.hw2s;
 
-import com.itsm.course.hw2.core.Server;
+import by.itsm.course.hw2s.core.Config;
+import by.itsm.course.hw2s.core.Server;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ServerMain {

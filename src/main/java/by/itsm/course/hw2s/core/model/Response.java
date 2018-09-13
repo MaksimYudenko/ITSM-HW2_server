@@ -1,4 +1,4 @@
-package com.itsm.course.hw2.dto;
+package by.itsm.course.hw2s.core.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

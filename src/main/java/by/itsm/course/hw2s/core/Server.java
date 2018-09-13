@@ -1,14 +1,11 @@
-package com.itsm.course.hw2.core;
+package by.itsm.course.hw2s.core;
 
+import by.itsm.course.hw2s.core.proccessors.RequestProcessor;
+import by.itsm.course.hw2s.core.model.Request;
+import by.itsm.course.hw2s.core.model.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itsm.course.hw2.dto.Request;
-import com.itsm.course.hw2.dto.Response;
 
 import javax.inject.Provider;
-
-import com.itsm.course.hw2.core.proccessors.RequestProcessor;
-import com.itsm.course.hw2.util.sleeper.ThreadSleeper;
-import com.itsm.course.hw2.util.sleeper.ThreadSleeperImpl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -27,7 +24,6 @@ public class Server implements Runnable {
     private final Provider<List<RequestProcessor>> requestProcessorProvider;
     private ServerSocket serverSocket;
     private ExecutorService executorService;
-    private ThreadSleeper sleeper = new ThreadSleeperImpl();
 
     public Server(int port, int threadCount, ObjectMapper mapper
             , Provider<List<RequestProcessor>> requestProcessorProvider) {
@@ -58,6 +54,7 @@ public class Server implements Runnable {
                 String requestString = dis.readUTF();
                 Request request = mapper.readValue(requestString, Request.class);
                 Response response = null;
+
                 List<RequestProcessor> processors = requestProcessorProvider.get();
                 for (RequestProcessor processor : processors) {
                     if (processor.isAdmissible(request)) {

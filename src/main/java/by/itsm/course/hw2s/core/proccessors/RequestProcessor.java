@@ -1,6 +1,6 @@
-package com.itsm.course.hw2.core.proccessors;
+package by.itsm.course.hw2s.core.proccessors;
 
-import com.itsm.course.hw2.dto.Request;
+import by.itsm.course.hw2s.core.model.Request;
 
 public interface RequestProcessor {
 

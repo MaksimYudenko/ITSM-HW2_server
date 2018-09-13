@@ -1,18 +1,18 @@
-package com.itsm.course.hw2;
+package by.itsm.course.hw2s.core;
 
+import by.itsm.course.hw2s.core.proccessors.RequestProcessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itsm.course.hw2.core.Server;
+import by.itsm.course.hw2s.core.Server;
 
 import javax.inject.Provider;
 
-import com.itsm.course.hw2.core.proccessors.RequestProcessor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 import java.util.List;
 
 @Configuration
-@ComponentScan("com.itsm.course.hw2")
+@ComponentScan("by.itsm.course.hw2s")
 @PropertySource("classpath:server.properties")
 public class Config {
 
@@ -22,7 +22,7 @@ public class Config {
     private Integer threadCount;
 
     @Bean
-    public ObjectMapper objectMapper() {
+    public ObjectMapper mapper() {
         return new ObjectMapper();
     }
 
