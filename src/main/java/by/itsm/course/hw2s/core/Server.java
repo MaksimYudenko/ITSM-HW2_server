@@ -1,14 +1,14 @@
 package by.itsm.course.hw2s.core;
 
-import by.itsm.course.hw2s.core.proccessors.RequestProcessor;
 import by.itsm.course.hw2s.core.model.Request;
 import by.itsm.course.hw2s.core.model.Response;
+import by.itsm.course.hw2s.core.proccessors.RequestProcessor;
+import by.itsm.course.hw2s.util.postProcessing.Metamorphosis;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import javax.inject.Provider;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -44,6 +44,7 @@ public class Server implements Runnable {
         executorService.shutdownNow();
     }
 
+    @Metamorphosis
     private void connect(Socket socket) {
         executorService.execute(() -> {
             try {

@@ -1,7 +1,8 @@
-FROM openjdk:11
+FROM openjdk:alpine
 COPY . /usr/itsm_hw2_server
 WORKDIR /usr/itsm_hw2_server
-RUN apt-get install gradle \
+RUN apk update \
+&& apk add gradle \
 && gradle build \
 && cd build/libs
-ENTRYPOINT ["java","-jar", "HW2s-1.0.jar"]
+ENTRYPOINT ["java","-jar", "/usr/itsm_hw2_server/build/libs/hw2s-1.0.jar"]
