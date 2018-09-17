@@ -1,4 +1,4 @@
-### HW1 server
+### HW2 server
 - to build a docker image:
 ```
 docker build -t hw2s .
