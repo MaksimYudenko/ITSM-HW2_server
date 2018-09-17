@@ -1,14 +1,15 @@
-package by.itsm.course.hw2s.core;
+package by.itsm.course.hw2s;
 
+import by.itsm.course.hw2s.core.Server;
 import by.itsm.course.hw2s.core.proccessors.RequestProcessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import by.itsm.course.hw2s.core.Server;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.inject.Provider;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
-
 import java.util.List;
 
 @Configuration
